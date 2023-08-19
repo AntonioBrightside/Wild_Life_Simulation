@@ -1,6 +1,8 @@
 ### MINE ###
 .idea/
 *.iml
+*.txt
+*.bak
 
 ### IntelliJ IDEA ###
 out/
