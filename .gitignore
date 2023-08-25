@@ -3,6 +3,10 @@
 *.iml
 *.txt
 *.bak
+Test_Classes_to_use_Further.java
+GridLayoutTest.java
+ImageLoadTest.java
+
 
 ### IntelliJ IDEA ###
 out/
