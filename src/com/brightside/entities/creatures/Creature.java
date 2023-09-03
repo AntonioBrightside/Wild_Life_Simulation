@@ -1,6 +1,6 @@
-package entities.creatures;
+package com.brightside.entities.creatures;
 
-import entities.Entity;
+import com.brightside.entities.Entity;
 
 public abstract class Creature extends Entity {
 
