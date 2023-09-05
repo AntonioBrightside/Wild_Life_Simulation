@@ -1,13 +1,20 @@
 package com.brightside.gui;
 
-import javax.swing.*;
-import java.awt.*;
+import com.brightside.entities.inanimates.Grass;
 
+import javax.swing.*;
+
+/**
+ *  Класс создаёт тяжёлый элемент окно GUI, в котором будет происходить вся визуализация
+ */
 public class Frame extends JFrame {
 
-    public Frame() {
+    /**
+     * Конструктор инициализации окна
+     */
+    public Frame(Grass object) {
 
-        this.add(new GamePanel());
+        this.add(new GamePanel(object));
         this.setTitle("Wild Life Simulation");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);

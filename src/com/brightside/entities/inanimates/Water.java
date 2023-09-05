@@ -1,4 +1,13 @@
 package com.brightside.entities.inanimates;
 
-public class Water {
+import com.brightside.entities.Entity;
+
+import java.awt.*;
+
+public class Water extends Entity {
+
+    @Override
+    public Image getImage(short cellSize) {
+        return t.getImage("src\\com\\brightside\\images\\water_" + cellSize + ".png");
+    }
 }
