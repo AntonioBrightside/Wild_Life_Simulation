@@ -22,16 +22,4 @@ public class Frame extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
-
-//    public void paintComponent(Graphics g) {
-//        super.paintComponents(g);
-//        draw(g);
-//    }
-//    public void draw(Graphics g) {
-//        for (int i = 0; i < (CUSTOM_FRAME[0] / CELL_SIZE); i++) {
-//            g.drawLine(i*CELL_SIZE, 0, i*CELL_SIZE, CUSTOM_FRAME[0]);
-//        }
-//    }
-
-
 }

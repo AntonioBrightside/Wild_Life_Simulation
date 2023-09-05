@@ -4,6 +4,8 @@ import com.brightside.entities.inanimates.Grass;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Создаёт верхнеуровневый контейнер JPanel для визуализации поля

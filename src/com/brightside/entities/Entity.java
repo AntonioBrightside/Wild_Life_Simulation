@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public abstract class Entity {
     protected static Toolkit t = Toolkit.getDefaultToolkit();
-    protected Random rnd = new Random();
+    protected static Random rnd = new Random();
     protected short x;
     protected short y;
 
@@ -20,6 +20,7 @@ public abstract class Entity {
     /**
      * Метод возвращает картинку
      * @return путь к картинке
+     * @param cellSize размер клетки, под которую подбирается картинка
      */
     public abstract Image getImage(short cellSize);
 
