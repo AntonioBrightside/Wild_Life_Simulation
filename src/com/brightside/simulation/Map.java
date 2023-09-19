@@ -10,8 +10,14 @@ import java.util.Random;
 public class Map {
 
     protected static Random rnd = new Random();
+    protected static final String[] namesEntities = {"Grass", "Rock", "Tree", "Water", "Herbivore", "Predator"};
+    protected static String[] namesInanimates = {"Rock", "Tree", "Water"};
+    protected static String[] namesFeed = {"Grass"};
+    protected static String[] namesCreatures = {"Herbivore", "Predator"};
     protected static ArrayList<int[]> coordinatesStillEntities = new ArrayList<>();
-    protected static ArrayList<int[]> coordinatesMobileEntities = new ArrayList<>();
+    protected static ArrayList<int[]> coordinatesHerbivore = new ArrayList<>();
+    protected static ArrayList<int[]> coordinatesPredator = new ArrayList<>();
+    protected static ArrayList<int[]> coordinatesFeed = new ArrayList<>();
     protected static HashMap<String, ArrayList<Entity>> dict = new HashMap<>();
 
     public Map() {
@@ -25,11 +31,20 @@ public class Map {
         dict.put("Grass", entities);
     }
 
-    public static HashMap<String, ArrayList<Entity>> getDict () {
+    private static void fillDict() {
+        ArrayList<Entity> entities = new ArrayList<>();
+        for (String name : namesEntities) {
+            for (int i = 0; i < rnd.nextInt(5, 15); i++) {
+                
+            }
+        }
+    }
+
+    public static HashMap<String, ArrayList<Entity>> getDict() {
         return dict;
     }
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         Map map = new Map();
         System.out.println(dict.entrySet());
 
@@ -38,7 +53,7 @@ public class Map {
 //        }
 
         for (Entity entity : dict.get("Grass")) {
-            System.out.println("Grass " + entity);
+            System.out.println("Grass " + entity + " " + entity.getX() + " " + entity.getY());
         }
 
 //        System.out.println(dict.get("Grass"));

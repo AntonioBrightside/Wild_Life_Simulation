@@ -34,6 +34,14 @@ public abstract class Entity {
                 (GamePanel.getCustomFrame()[1] / GamePanel.getCellSize())) * GamePanel.getCellSize());
      }
 
+    /**
+     * Вовзращает координаты объекта [x, y]
+     * @return short [x, y]
+     */
+    public short[] getCoordinates() {
+        return new short[] {x, y};
+    }
+
      /**
       * Возвращает координату Х объекта
       * @return X
@@ -49,4 +57,8 @@ public abstract class Entity {
     public short getY() {
         return y;
     }
+
+
 }
+
+
