@@ -36,10 +36,10 @@ public abstract class Entity {
 
     /**
      * Вовзращает координаты объекта [x, y]
-     * @return short [x, y]
+     * @return int [x, y]
      */
-    public short[] getCoordinates() {
-        return new short[] {x, y};
+    public int[] getCoordinates() {
+        return new int[] {x, y};
     }
 
      /**

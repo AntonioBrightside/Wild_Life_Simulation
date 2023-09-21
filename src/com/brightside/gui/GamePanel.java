@@ -1,7 +1,6 @@
 package com.brightside.gui;
 
 import com.brightside.entities.Entity;
-import com.brightside.entities.inanimates.Grass;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +15,9 @@ public class GamePanel extends JPanel {
     private final static short CELL_SIZE = 25; // ТОЛЬКО 25 и 50
     private static HashMap<String, ArrayList<Entity>> dictionary;
 
-    protected GamePanel(HashMap<String, ArrayList<Entity>> dictionary) {
-        this.setPreferredSize(new Dimension(CUSTOM_FRAME[0], CUSTOM_FRAME[1]));
-        this.dictionary = dictionary;
+    protected GamePanel(HashMap<String, ArrayList<Entity>> dictEntities) {
+        setPreferredSize(new Dimension(CUSTOM_FRAME[0], CUSTOM_FRAME[1]));
+        dictionary = dictEntities;
         System.out.println(this.dictionary);
     }
 
@@ -41,13 +40,15 @@ public class GamePanel extends JPanel {
             g.drawLine(0, i*CELL_SIZE, CUSTOM_FRAME[0], i*CELL_SIZE);
         }
 
-//        Toolkit t = Toolkit.getDefaultToolkit();
-//        Image rock = t.getImage("src\\com\\brightside\\images\\grass_25.png");
-//        g.drawImage(rock, 25, 25, this);
-
-        for (Entity ent : dictionary.get("Grass")) {
-            g.drawImage(ent.getImage(CELL_SIZE), ent.getX(), ent.getY(), this);
+        for (String name : dictionary.keySet()) {
+            for (Entity entity : dictionary.get(name)) {
+                g.drawImage(entity.getImage(CELL_SIZE), entity.getX(), entity.getY(), this);
+            }
         }
+
+//        for (Entity ent : dictionary.get("Grass")) {
+//            g.drawImage(ent.getImage(CELL_SIZE), ent.getX(), ent.getY(), this);
+//        }
 //        g.drawImage(object.getImage(CELL_SIZE), object.getX(), object.getY(), this);
     }
 

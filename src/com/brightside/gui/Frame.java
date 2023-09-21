@@ -15,9 +15,9 @@ public class Frame extends JFrame {
     /**
      * Конструктор инициализации окна
      */
-    public Frame(HashMap<String, ArrayList<Entity>> dictionary) {
+    public Frame(HashMap<String, ArrayList<Entity>> dictEntities) {
 
-        add(new GamePanel(dictionary));
+        add(new GamePanel(dictEntities));
         setTitle("Wild Life Simulation");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
