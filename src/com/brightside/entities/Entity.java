@@ -35,7 +35,7 @@ public abstract class Entity {
      }
 
     /**
-     * Вовзращает координаты объекта [x, y]
+     * Возвращает координаты объекта [x, y]
      * @return int [x, y]
      */
     public int[] getCoordinates() {
