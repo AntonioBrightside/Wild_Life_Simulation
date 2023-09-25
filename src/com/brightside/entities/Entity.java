@@ -1,7 +1,10 @@
 package com.brightside.entities;
 
 import com.brightside.gui.GamePanel;
+
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -10,51 +13,69 @@ import java.util.Random;
 public abstract class Entity {
     protected static Toolkit t = Toolkit.getDefaultToolkit();
     protected static Random rnd = new Random();
-    protected short x;
-    protected short y;
+    protected int x;
+    protected int y;
+    protected int cellSize = GamePanel.getCellSize();
+    protected int[] customFrame = GamePanel.getCustomFrame();
+    protected static final ArrayList<int[]> MOVE_COMBINATION = new ArrayList<>(
+            Arrays.asList(new int[]{-1, -1}, new int[]{0, -1}, new int[]{1, -1}, new int[]{-1, 0}, new int[]{1, 0},
+                    new int[]{-1, 1}, new int[]{0, 1}, new int[]{1, 1}));
 
     protected Entity() {
-        this.setCoordinates();
+        this.setRandomCoordinates();
     }
 
     /**
      * Метод возвращает картинку
-     * @return путь к картинке
+     *
      * @param cellSize размер клетки, под которую подбирается картинка
+     * @return путь к картинке
      */
-    public abstract Image getImage(short cellSize);
+    public abstract Image getImage(int cellSize);
 
     /**
-     * Метод создаёт координаты объекта на поле
+     * Метод создаёт псевдослучайные координаты объекта на поле
      */
-    public void setCoordinates() {
-        x = (short) (rnd.nextInt(0,
-                (GamePanel.getCustomFrame()[0] / GamePanel.getCellSize())) * GamePanel.getCellSize());
-        y = (short) (rnd.nextInt(0,
-                (GamePanel.getCustomFrame()[1] / GamePanel.getCellSize())) * GamePanel.getCellSize());
-     }
+    public void setRandomCoordinates() {
+        x = (rnd.nextInt(0,
+                (customFrame[0] / cellSize)) * cellSize);
+        y = (rnd.nextInt(0,
+                (customFrame[1] / cellSize)) * cellSize);
+    }
+
+    /**
+     * Метод принимает массив и меняет координаты объекта на поле
+     * @param coordinates координаты на поле [x, y]
+     */
+    public void setCoordinate(int[] coordinates) {
+        x = coordinates[0];
+        y = coordinates[1];
+    }
 
     /**
      * Возвращает координаты объекта [x, y]
+     *
      * @return int [x, y]
      */
     public int[] getCoordinates() {
-        return new int[] {x, y};
+        return new int[]{x, y};
     }
 
-     /**
-      * Возвращает координату Х объекта
-      * @return X
-      */
-    public short getX() {
+    /**
+     * Возвращает координату Х объекта
+     *
+     * @return X
+     */
+    public int getX() {
         return x;
     }
 
     /**
      * Возвращает координату Y объекта
+     *
      * @return Y
      */
-    public short getY() {
+    public int getY() {
         return y;
     }
 

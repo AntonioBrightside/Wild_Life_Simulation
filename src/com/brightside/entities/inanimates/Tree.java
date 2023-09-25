@@ -7,7 +7,7 @@ import java.awt.*;
 public class Tree extends Entity {
 
     @Override
-    public Image getImage(short cellSize) {
+    public Image getImage(int cellSize) {
         return t.getImage("src\\com\\brightside\\images\\tree_" + cellSize + ".png");
     }
 }

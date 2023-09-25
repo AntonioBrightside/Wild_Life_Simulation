@@ -5,12 +5,12 @@ import java.awt.*;
 
 public class Herbivore extends Creature {
 
-    @Override
-    public Image getImage(short cellSize) {
-        return t.getImage("src\\com\\brightside\\images\\herbivore_" + cellSize + ".png");
+    public Herbivore() {
+        speed = 1;
     }
 
     @Override
-    public void makeMove() {
+    public Image getImage(int cellSize) {
+        return t.getImage("src\\com\\brightside\\images\\herbivore_" + cellSize + ".png");
     }
 }

@@ -7,11 +7,7 @@ import java.awt.*;
 public class Predator extends Creature {
 
     @Override
-    public Image getImage(short cellSize) {
+    public Image getImage(int cellSize) {
         return t.getImage("src\\com\\brightside\\images\\predator_" + cellSize + ".png");
-    }
-
-    @Override
-    public void makeMove() {
     }
 }

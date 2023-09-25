@@ -7,7 +7,7 @@ import java.awt.*;
 public class Water extends Entity {
 
     @Override
-    public Image getImage(short cellSize) {
+    public Image getImage(int cellSize) {
         return t.getImage("src\\com\\brightside\\images\\water_" + cellSize + ".png");
     }
 }

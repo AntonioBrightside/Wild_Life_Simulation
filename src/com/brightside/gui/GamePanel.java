@@ -11,14 +11,14 @@ import java.util.HashMap;
  * Создаёт верхнеуровневый контейнер JPanel для визуализации поля
  */
 public class GamePanel extends JPanel {
-    private final static short[] CUSTOM_FRAME = {800, 600}; // должен '%'на CELL_SIZE
-    private final static short CELL_SIZE = 25; // ТОЛЬКО 25 и 50
+    private final static int[] CUSTOM_FRAME = {800, 600}; // должен '%'на CELL_SIZE
+    private final static int CELL_SIZE = 25; // ТОЛЬКО 25 и 50
     private static HashMap<String, ArrayList<Entity>> dictionary;
 
     protected GamePanel(HashMap<String, ArrayList<Entity>> dictEntities) {
         setPreferredSize(new Dimension(CUSTOM_FRAME[0], CUSTOM_FRAME[1]));
         dictionary = dictEntities;
-        System.out.println(this.dictionary);
+        System.out.println(dictionary);
     }
 
     /**
@@ -62,6 +62,6 @@ public class GamePanel extends JPanel {
      * Возвращает размер поля
      * @return размер поля [CUSTOM_FRAME]
      */
-    public static short[] getCustomFrame() {return CUSTOM_FRAME;}
+    public static int[] getCustomFrame() {return CUSTOM_FRAME;}
 
 }
