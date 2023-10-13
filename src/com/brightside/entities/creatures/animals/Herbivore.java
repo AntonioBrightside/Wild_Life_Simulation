@@ -7,6 +7,7 @@ public class Herbivore extends Creature {
 
     public Herbivore() {
         speed = 1;
+        HP = 10;
     }
 
     @Override

@@ -18,6 +18,10 @@ public class Actions {
     protected static Random RND = new Random();
     protected static final String[] namesEntities = Map.getNamesEntities();
 
+    public Actions() {
+        initialActions();
+    }
+
     /**
      * Данный метод расставляет первоначально объекты на карте / инициализирует наполнение словаря {"сущность":[объекты], ....}
      */
