@@ -14,6 +14,7 @@ public class Map {
     private static HashMap<String, ArrayList<Entity>> map = new HashMap<>();
     private static ArrayList<int[]> coordinates = new ArrayList<>();
 
+
     public static HashMap<String, ArrayList<Entity>> getDict() {
         return map;
     }
