@@ -16,17 +16,17 @@ import java.util.Random;
  */
 public class Actions {
     protected static Random RND = new Random();
-    protected static final String[] namesEntities = Map.getNamesEntities();
+    protected static final String[] ENTITIES_NAMES = Map.getEntitiesNames();
 
-    public Actions() {
-        initialActions();
+    public Actions(Map map) {
+        initialActions(map);
     }
 
     /**
      * Данный метод расставляет первоначально объекты на карте / инициализирует наполнение словаря {"сущность":[объекты], ....}
      */
-    public void initialActions() {
-        for (String name : namesEntities) {
+    public void initialActions(Map map) {
+        for (String name : ENTITIES_NAMES) {
             ArrayList<Entity> entities = new ArrayList<>();
             switch (name) {
                 case "Grass" -> {
@@ -34,33 +34,33 @@ public class Actions {
                         Grass grass;
                         do {
                             grass = new Grass();
-                        } while (isUsedCoordinates(grass));
+                        } while (isUsedCoordinates(grass, map));
                         entities.add(grass);
-                        Map.addCoordinates(grass.getCoordinates());
+                        map.addCoordinates(grass.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
                 case "Rock" -> {
                     for (int i = 0; i < RND.nextInt(15, 20); i++) {
                         Rock rock;
                         do {
                             rock = new Rock();
-                        } while (isUsedCoordinates(rock));
+                        } while (isUsedCoordinates(rock, map));
                         entities.add(rock);
-                        Map.addCoordinates(rock.getCoordinates());
+                        map.addCoordinates(rock.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
                 case "Tree" -> {
                     for (int i = 0; i < RND.nextInt(15, 20); i++) {
                         Tree tree;
                         do {
                             tree = new Tree();
-                        } while (isUsedCoordinates(tree));
+                        } while (isUsedCoordinates(tree, map));
                         entities.add(tree);
-                        Map.addCoordinates(tree.getCoordinates());
+                        map.addCoordinates(tree.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
 
                 case "Water" -> {
@@ -68,11 +68,11 @@ public class Actions {
                         Water water;
                         do {
                             water = new Water();
-                        } while (isUsedCoordinates(water));
+                        } while (isUsedCoordinates(water, map));
                         entities.add(water);
-                        Map.addCoordinates(water.getCoordinates());
+                        map.addCoordinates(water.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
 
                 case "Herbivore" -> {
@@ -80,11 +80,11 @@ public class Actions {
                         Herbivore herbivore;
                         do {
                             herbivore = new Herbivore();
-                        } while (isUsedCoordinates(herbivore));
+                        } while (isUsedCoordinates(herbivore, map));
                         entities.add(herbivore);
-                        Map.addCoordinates(herbivore.getCoordinates());
+                        map.addCoordinates(herbivore.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
 
                 case "Predator" -> {
@@ -92,26 +92,24 @@ public class Actions {
                         Predator predator;
                         do {
                             predator = new Predator();
-                        } while (isUsedCoordinates(predator));
+                        } while (isUsedCoordinates(predator, map));
                         entities.add(predator);
-                        Map.addCoordinates(predator.getCoordinates());
+                        map.addCoordinates(predator.getCoordinates());
                     }
-                    Map.addToDict(name, entities);
+                    map.addToMap(name, entities);
                 }
             }
         }
     }
 
-    public void nextTurn() {
-
+    public void nextTurn() { // TODO: add
     }
 
     /**
      * Осуществляет действие каждого одушевленного объекта
      * @param map словарь с объектами
      */
-    public void makeMove(Map map) {
-        map.
+    public void makeMove(Map map) { // TODO: add
     }
 
     /**
@@ -120,8 +118,8 @@ public class Actions {
      * @param entity создаваемый объект, который появляется на карте
      * @return true (used) or false (not used)
      */
-    private static boolean isUsedCoordinates(Entity entity) {
-        ArrayList<int[]> coordinates = Map.getCoordinates();
+    private static boolean isUsedCoordinates(Entity entity, Map map) {
+        ArrayList<int[]> coordinates = map.getCoordinates();
         for (int[] coordinate : coordinates)
             if (coordinate[0] == entity.getX() && coordinate[1] == entity.getY()) {
                 return true;

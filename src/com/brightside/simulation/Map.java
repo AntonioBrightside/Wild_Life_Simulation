@@ -10,33 +10,33 @@ import java.util.HashMap;
  */
 public class Map {
 
-    private static final String[] namesEntities = {"Grass", "Rock", "Tree", "Water", "Herbivore", "Predator"};
-    private static HashMap<String, ArrayList<Entity>> map = new HashMap<>();
-    private static ArrayList<int[]> coordinates = new ArrayList<>();
+    private static final String[] NAMES_ENTITIES = {"Grass", "Rock", "Tree", "Water", "Herbivore", "Predator"};
+    private HashMap<String, ArrayList<Entity>> map = new HashMap<>();
+    private ArrayList<int[]> coordinates = new ArrayList<>();
 
 
-    public static HashMap<String, ArrayList<Entity>> getDict() {
+    public HashMap<String, ArrayList<Entity>> getMap() {
         return map;
     }
 
-    public static String[] getNamesEntities() {
-        return namesEntities;
+    public static String[] getEntitiesNames() {
+        return NAMES_ENTITIES;
     }
 
-    public static ArrayList<int[]> getCoordinates() {
+    public ArrayList<int[]> getCoordinates() {
         return coordinates;
     }
 
-    public static void addToDict(String name, ArrayList<Entity> entity) {
+    public void addToMap(String name, ArrayList<Entity> entity) {
         map.put(name, entity);
     }
 
-    public static void addCoordinates(int[] coordinate) {
+    public void addCoordinates(int[] coordinate) {
         coordinates.add(coordinate);
     }
-
-    static {
-        Actions actions = new Actions();
-    }
+//
+//    static {
+//        Actions actions = new Actions();
+//    }
 
 }
