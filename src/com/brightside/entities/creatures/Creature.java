@@ -8,11 +8,10 @@ public abstract class Creature extends Entity {
     protected int HP;
 
     /**
-     * Существо делает ход. В идеале (если существо не располагается по краям) существует 8 вариантов движения. Все варианты сейчас учтены
-     *
-     * @return массив координат. На текущем этапе пока не сохраняются у объекта
+     * Существо делает ход. В идеале (если существо не располагается по краям) существует 8 вариантов движения. Все варианты сейчас учтены.
+     * Передаёт координаты сразу у вызываемого объекта
      */
-    public int[] makeMove() {
+    public void makeMove() {
         int[] move;
         int[] coordinates;
 
@@ -22,7 +21,7 @@ public abstract class Creature extends Entity {
         } while ((x + (move[0] * cellSize)) < 0 || (x + (move[0] * cellSize)) > customFrame[0] ||
                 (y + (move[1] * cellSize)) < 0 || (y + (move[1] * cellSize)) > customFrame[1]);
 
-        return coordinates;
+        this.setCoordinate(coordinates); // TODO: нет проверки на наличие в ячейке объекта. Реализовать где-то
     }
 
 

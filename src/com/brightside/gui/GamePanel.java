@@ -18,7 +18,6 @@ public class GamePanel extends JPanel {
     protected GamePanel(HashMap<String, ArrayList<Entity>> dictEntities) {
         setPreferredSize(new Dimension(CUSTOM_FRAME[0], CUSTOM_FRAME[1]));
         dictionary = dictEntities;
-        System.out.println(dictionary);
     }
 
     /**
@@ -45,23 +44,22 @@ public class GamePanel extends JPanel {
                 g.drawImage(entity.getImage(CELL_SIZE), entity.getX(), entity.getY(), this);
             }
         }
-
-//        for (Entity ent : dictionary.get("Grass")) {
-//            g.drawImage(ent.getImage(CELL_SIZE), ent.getX(), ent.getY(), this);
-//        }
-//        g.drawImage(object.getImage(CELL_SIZE), object.getX(), object.getY(), this);
     }
 
     /**
      * Возвращает размер клетки поля
      * @return размер клетки [CELL_SIZE]
      */
-    public static short getCellSize() {return CELL_SIZE;}
+    public static short getCellSize() {
+        return CELL_SIZE;
+    }
 
     /**
      * Возвращает размер поля
      * @return размер поля [CUSTOM_FRAME]
      */
-    public static int[] getCustomFrame() {return CUSTOM_FRAME;}
+    public static int[] getCustomFrame() {
+        return CUSTOM_FRAME;
+    }
 
 }

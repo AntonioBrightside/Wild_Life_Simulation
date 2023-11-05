@@ -1,6 +1,7 @@
 package com.brightside.simulation;
 
 import com.brightside.entities.Entity;
+import com.brightside.entities.creatures.Creature;
 import com.brightside.entities.creatures.animals.Herbivore;
 import com.brightside.entities.creatures.animals.Predator;
 import com.brightside.entities.inanimates.Grass;
@@ -25,7 +26,7 @@ public class Actions {
     /**
      * Данный метод расставляет первоначально объекты на карте / инициализирует наполнение словаря {"сущность":[объекты], ....}
      */
-    public void initialActions(Map map) {
+    public void initialActions(Map map) { // TODO: можно ли реализовать полиморфизм?
         for (String name : ENTITIES_NAMES) {
             ArrayList<Entity> entities = new ArrayList<>();
             switch (name) {
@@ -107,9 +108,32 @@ public class Actions {
 
     /**
      * Осуществляет действие каждого одушевленного объекта
+     *
      * @param map словарь с объектами
      */
-    public void makeMove(Map map) { // TODO: add
+    public void makeMove(Map map) { // TODO: однозначно не хватает полиморфизма + не передаёт в coordinates?
+        String[] mapKeys = map.getMap().keySet().toArray(new String[0]);
+
+        for (String name : mapKeys) {
+            switch (name) {
+                case "Herbivore" -> {
+                    for (Entity entity : map.getMap().get("Herbivore")) {
+                        Herbivore herbivore = (Herbivore) entity;
+                        do {
+                            herbivore.makeMove();
+                        } while (isUsedCoordinates(herbivore, map));
+                    }
+                }
+                case "Predator" -> {
+                    for (Entity entity : map.getMap().get("Predator")) {
+                        Predator predator = (Predator) entity;
+                        do {
+                            predator.makeMove();
+                        } while (isUsedCoordinates(predator, map));
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -121,11 +145,7 @@ public class Actions {
     private static boolean isUsedCoordinates(Entity entity, Map map) {
         ArrayList<int[]> coordinates = map.getCoordinates();
         for (int[] coordinate : coordinates)
-            if (coordinate[0] == entity.getX() && coordinate[1] == entity.getY()) {
-                return true;
-            } else {
-                return false;
-            }
+            return coordinate[0] == entity.getX() && coordinate[1] == entity.getY();
         return false;
     }
 

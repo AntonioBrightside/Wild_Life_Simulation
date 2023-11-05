@@ -34,9 +34,5 @@ public class Map {
     public void addCoordinates(int[] coordinate) {
         coordinates.add(coordinate);
     }
-//
-//    static {
-//        Actions actions = new Actions();
-//    }
 
 }
