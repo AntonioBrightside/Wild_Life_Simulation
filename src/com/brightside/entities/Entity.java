@@ -15,8 +15,7 @@ public abstract class Entity {
     protected static Random rnd = new Random();
     protected int x;
     protected int y;
-    protected int cellSize = GamePanel.getCellSize();
-    protected int[] customFrame = GamePanel.getCustomFrame();
+
     protected static final ArrayList<int[]> MOVE_COMBINATION = new ArrayList<>(
             Arrays.asList(new int[]{-1, -1}, new int[]{0, -1}, new int[]{1, -1}, new int[]{-1, 0}, new int[]{1, 0},
                     new int[]{-1, 1}, new int[]{0, 1}, new int[]{1, 1}));
@@ -37,6 +36,9 @@ public abstract class Entity {
      * Метод создаёт псевдослучайные координаты объекта на поле
      */
     public void setRandomCoordinates() {
+        int cellSize = GamePanel.getCellSize();
+        int[] customFrame = GamePanel.getCustomFrame();
+
         x = (rnd.nextInt(0,
                 (customFrame[0] / cellSize)) * cellSize);
         y = (rnd.nextInt(0,

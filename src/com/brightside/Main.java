@@ -16,14 +16,13 @@ public class Main {
         Frame frame = new Frame(map.getMap());
         frame.setVisible(true);
 
-        TimeUnit.SECONDS.sleep(2);
-        actions.makeMove(map);
-        frame.repaint();
-        System.out.println("Make move");
-
-        TimeUnit.SECONDS.sleep(2);
-        actions.makeMove(map);
-        frame.repaint();
-        System.out.println("Make move");
+        int i = 0;
+        while (i <= 10) {
+            TimeUnit.SECONDS.sleep(2);
+            actions.makeMove(map);
+            frame.repaint();
+            System.out.println("Make move");
+            i++;
+        }
     }
 }

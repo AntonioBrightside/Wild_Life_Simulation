@@ -4,6 +4,7 @@ import com.brightside.entities.Entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Класс-хранитель данных.
@@ -12,7 +13,7 @@ public class Map {
 
     private static final String[] NAMES_ENTITIES = {"Grass", "Rock", "Tree", "Water", "Herbivore", "Predator"};
     private HashMap<String, ArrayList<Entity>> map = new HashMap<>();
-    private ArrayList<int[]> coordinates = new ArrayList<>();
+    private List<int[]> coordinates = new ArrayList<>(); // TODO: проверить, что везде ли передаётся? точно нужен для кода?
 
 
     public HashMap<String, ArrayList<Entity>> getMap() {
@@ -23,7 +24,7 @@ public class Map {
         return NAMES_ENTITIES;
     }
 
-    public ArrayList<int[]> getCoordinates() {
+    public List<int[]> getCoordinates() {
         return coordinates;
     }
 
@@ -33,6 +34,10 @@ public class Map {
 
     public void addCoordinates(int[] coordinate) {
         coordinates.add(coordinate);
+    }
+
+    public void deleteCoordinates(int[] coordinate) {
+        coordinates.remove(coordinate);
     }
 
 }

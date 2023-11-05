@@ -1,6 +1,7 @@
 package com.brightside.entities.creatures;
 
 import com.brightside.entities.Entity;
+import com.brightside.gui.GamePanel;
 
 public abstract class Creature extends Entity {
 
@@ -12,6 +13,8 @@ public abstract class Creature extends Entity {
      * Передаёт координаты сразу у вызываемого объекта
      */
     public void makeMove() {
+        int cellSize = GamePanel.getCellSize();
+        int[] customFrame = GamePanel.getCustomFrame();
         int[] move;
         int[] coordinates;
 
@@ -21,7 +24,7 @@ public abstract class Creature extends Entity {
         } while ((x + (move[0] * cellSize)) < 0 || (x + (move[0] * cellSize)) > customFrame[0] ||
                 (y + (move[1] * cellSize)) < 0 || (y + (move[1] * cellSize)) > customFrame[1]);
 
-        this.setCoordinate(coordinates); // TODO: нет проверки на наличие в ячейке объекта. Реализовать где-то
+        this.setCoordinate(coordinates); // Нет проверки на наличие в ячейке объекта. Реализовано при вызове метода
     }
 
 

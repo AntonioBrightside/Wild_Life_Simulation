@@ -10,6 +10,7 @@ import com.brightside.entities.inanimates.Tree;
 import com.brightside.entities.inanimates.Water;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -31,7 +32,7 @@ public class Actions {
             ArrayList<Entity> entities = new ArrayList<>();
             switch (name) {
                 case "Grass" -> {
-                    for (int i = 0; i < RND.nextInt(10, 15); i++) {
+                    for (int i = 0; i < RND.nextInt(30, 50); i++) {
                         Grass grass;
                         do {
                             grass = new Grass();
@@ -42,7 +43,7 @@ public class Actions {
                     map.addToMap(name, entities);
                 }
                 case "Rock" -> {
-                    for (int i = 0; i < RND.nextInt(15, 20); i++) {
+                    for (int i = 0; i < RND.nextInt(15, 30); i++) {
                         Rock rock;
                         do {
                             rock = new Rock();
@@ -53,7 +54,7 @@ public class Actions {
                     map.addToMap(name, entities);
                 }
                 case "Tree" -> {
-                    for (int i = 0; i < RND.nextInt(15, 20); i++) {
+                    for (int i = 0; i < RND.nextInt(30, 50); i++) {
                         Tree tree;
                         do {
                             tree = new Tree();
@@ -65,7 +66,7 @@ public class Actions {
                 }
 
                 case "Water" -> {
-                    for (int i = 0; i < RND.nextInt(10, 15); i++) {
+                    for (int i = 0; i < RND.nextInt(20, 30); i++) {
                         Water water;
                         do {
                             water = new Water();
@@ -111,7 +112,7 @@ public class Actions {
      *
      * @param map словарь с объектами
      */
-    public void makeMove(Map map) { // TODO: однозначно не хватает полиморфизма + не передаёт в coordinates?
+    public void makeMove(Map map) { // TODO: однозначно не хватает полиморфизма
         String[] mapKeys = map.getMap().keySet().toArray(new String[0]);
 
         for (String name : mapKeys) {
@@ -120,16 +121,20 @@ public class Actions {
                     for (Entity entity : map.getMap().get("Herbivore")) {
                         Herbivore herbivore = (Herbivore) entity;
                         do {
+                            deleteOldCoordinates(herbivore.getCoordinates(), map);
                             herbivore.makeMove();
                         } while (isUsedCoordinates(herbivore, map));
+                        map.addCoordinates(herbivore.getCoordinates());
                     }
                 }
                 case "Predator" -> {
                     for (Entity entity : map.getMap().get("Predator")) {
                         Predator predator = (Predator) entity;
                         do {
+                            deleteOldCoordinates(predator.getCoordinates(), map);
                             predator.makeMove();
                         } while (isUsedCoordinates(predator, map));
+                        map.addCoordinates(predator.getCoordinates());
                     }
                 }
             }
@@ -143,10 +148,23 @@ public class Actions {
      * @return true (used) or false (not used)
      */
     private static boolean isUsedCoordinates(Entity entity, Map map) {
-        ArrayList<int[]> coordinates = map.getCoordinates();
-        for (int[] coordinate : coordinates)
-            return coordinate[0] == entity.getX() && coordinate[1] == entity.getY();
+        List<int[]> coordinates = map.getCoordinates();
+        for (int[] coordinate : coordinates) {
+            if (coordinate[0] == entity.getX() && coordinate[1] == entity.getY()) {
+                return true;
+            }
+        }
         return false;
+    }
+
+    private static void deleteOldCoordinates(int[] ints, Map map) {
+        for (int[] coordinate : map.getCoordinates()) {
+            if (ints == coordinate) { // TODO: не находит, исправить
+                map.deleteCoordinates(coordinate);
+                System.out.println("Yes, deleting");
+                return;
+            }
+        }
     }
 
 }
