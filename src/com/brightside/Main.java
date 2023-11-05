@@ -17,7 +17,7 @@ public class Main {
         frame.setVisible(true);
 
         int i = 0;
-        while (i <= 10) {
+        while (i <= 5) {
             TimeUnit.SECONDS.sleep(2);
             actions.makeMove(map);
             frame.repaint();

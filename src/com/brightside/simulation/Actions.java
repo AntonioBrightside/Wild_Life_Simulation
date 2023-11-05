@@ -117,7 +117,7 @@ public class Actions {
 
         for (String name : mapKeys) {
             switch (name) {
-                case "Herbivore" -> {
+                case "Herbivore" -> { // TODO: заменить на Creature? и вызывать его методы?
                     for (Entity entity : map.getMap().get("Herbivore")) {
                         Herbivore herbivore = (Herbivore) entity;
                         do {
@@ -157,11 +157,17 @@ public class Actions {
         return false;
     }
 
+    /**
+     * Метод удаляет старые координаты из массива Map.coordinates. Т.е. обновляет все координаты объектов на карте
+     * @param ints целочисленный массив новых координат
+     * @param map акутальная карта
+     */
     private static void deleteOldCoordinates(int[] ints, Map map) {
         for (int[] coordinate : map.getCoordinates()) {
-            if (ints == coordinate) { // TODO: не находит, исправить
+            if (ints[0] == coordinate[0] && ints[1] == coordinate[1]) {
                 map.deleteCoordinates(coordinate);
                 System.out.println("Yes, deleting");
+                System.out.println(map.getCoordinates());
                 return;
             }
         }
